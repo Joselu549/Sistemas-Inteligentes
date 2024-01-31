@@ -1,0 +1,6 @@
+5
+R1: Si condAnt Entonces experimentado, FC=0.9
+R2: Si cond+3h Entonces cansado, FC=0.5
+R3: Si experimentado y noViajaSolo Entonces culpable, FC=-0.5
+R4: Si cansado Entonces culpable, FC=0.5
+R5: Si condNuevo y bebeAlcohol Entonces culpable, FC=0.7

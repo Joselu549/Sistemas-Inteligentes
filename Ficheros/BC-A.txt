@@ -1,0 +1,6 @@
+5
+R1: Si llueve Entonces mojado, FC=1
+R2: Si festivo y cenaCasa Entonces limpiarPatio, FC=0.9
+R3: Si peloMascota Entonces sucio, FC=0.8
+R4: Si sucio y mojado Entonces limpiarPatio, FC=0.9
+R5: Si visita Entonces limpiarPatio, FC=0.3

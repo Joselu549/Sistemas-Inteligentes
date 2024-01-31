@@ -1,0 +1,8 @@
+5
+condNuevo, FC=-1
+cond+3h, FC=1
+condAnt, FC=1
+bebeAlcohol, FC=0.5
+noViajaSolo, FC=-1
+Objetivo
+culpable

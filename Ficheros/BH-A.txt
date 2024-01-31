@@ -1,0 +1,8 @@
+5
+llueve, FC=0.6
+peloMascota, FC=1
+visita, FC=0.8
+festivo, FC=1
+cenaCasa, FC=0.33
+Objetivo
+limpiarPatio
