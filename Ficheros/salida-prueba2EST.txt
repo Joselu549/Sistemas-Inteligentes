@@ -1,0 +1,44 @@
+--- BC ---
+Nº 1 = ID: R1, FC: 0.4, OP: 0, OP1: arbMod, OP2: , RES: ganaEST
+Nº 2 = ID: R2, FC: 0.75, OP: 0, OP1: arbMod, OP2: , RES: ganaRM
+Nº 3 = ID: R3, FC: -0.4, OP: 0, OP1: publicoMayEST, OP2: , RES: ganaRM
+Nº 4 = ID: R4, FC: -0.55, OP: 0, OP1: publicoEqui, OP2: , RES: ganaEST
+Nº 5 = ID: R5, FC: -0.1, OP: 1, OP1: les2pivRM, OP2: visitanteRM, RES: ganaRM
+Nº 6 = ID: R6, FC: -0.6, OP: 0, OP1: les2pivEST, OP2: , RES: ganaEST
+--- BH ---
+Nº 1 = ID: localEST, FC: 1
+Nº 2 = ID: visitanteRM, FC: 1
+Nº 3 = ID: arbMod, FC: 1
+Nº 4 = ID: publicoMayEST, FC: 0.65
+Nº 5 = ID: publicoEqui, FC: 0.35
+Nº 6 = ID: les2pivEST, FC: 1
+Nº 7 = ID: les2pivRM, FC: 1
+Encontrada 1 meta
+Objetivo 1: ganaEST
+Conjunto Conflicto para la meta ganaEST:
+	Nº 1 = ID: R1, FC: 0.4, OP: 0, OP1: arbMod, OP2: , RES: ganaEST
+	Nº 2 = ID: R4, FC: -0.55, OP: 0, OP1: publicoEqui, OP2: , RES: ganaEST
+	Nº 3 = ID: R6, FC: -0.6, OP: 0, OP1: les2pivEST, OP2: , RES: ganaEST
+Regla R1 (seleccionada)
+Antecesores de R1:
+	Nº 1: ID: arbMod
+Regla a comprobar: R1
+	Caso 3: 0.4 * max(0, 1)
+Añadido ganaEST a la BH con FC = 0.4
+Regla R4 (seleccionada)
+Antecesores de R4:
+	Nº 1: ID: publicoEqui
+Regla a comprobar: R4
+	Caso 3: -0.55 * max(0, 0.35)
+Concatenar 0.4 y -0.1925
+	Caso 2: (0.4 + -0.1925) / (1 - min(abs(0.4), abs(-0.1925)))
+Actualizada ganaEST a la BH con FC = 0.256966
+Regla R6 (seleccionada)
+Antecesores de R6:
+	Nº 1: ID: les2pivEST
+Regla a comprobar: R6
+	Caso 3: -0.6 * max(0, 1)
+Concatenar 0.256966 y -0.6
+	Caso 2: (0.256966 + -0.6) / (1 - min(abs(0.256966), abs(-0.6)))
+Actualizada ganaEST a la BH con FC = -0.461667
+El algoritmo SBR con encadenamiento hacia atrás verifica la meta ganaEST con FC = -0.461667

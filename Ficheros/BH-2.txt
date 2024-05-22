@@ -7,4 +7,4 @@ publicoEqui, FC=0.35
 les2pivEST, FC=1
 les2pivRM, FC=1
 Objetivo
-ganaEST
+ganaRM
