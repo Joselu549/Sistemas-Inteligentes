@@ -1,7 +1,7 @@
 /** \file main.cpp
- * \brief Este es el archivo main, en el que est  todo el
- *          c¢digo del motor de inferencias y la funci¢n main.
- * \author Jos‚ Luis Abell n Monreal
+ * \brief Este es el archivo main, en el que estï¿½ todo el
+ *          cÃ³digo del motor de inferencias y la funciï¿½n main.
+ * \author JosÃ© Luis AbellÃ¡n Monreal
  * \date 25/01/2024
 */
 #include <iostream>
@@ -17,7 +17,7 @@ using namespace std;
 vector<Hecho> BH; /**< Base de Hechos. La base se declara como un vector de Hecho. */
 vector<Regla> BC; /**< Base de Conocimientos. La base se declara como un vector de Regla. */
 
-/** \brief Este m‚todo sirve para imprimir las bases de hechos
+/** \brief Este mï¿½todo sirve para imprimir las bases de hechos
  *          y de conocimientos.
  */
 void print_bases() {
@@ -35,10 +35,10 @@ void print_bases() {
 }
 
 /** \brief Este mÃ©todo sirve para separar una cadena en subcadenas
- *          dado un patr¢n de entrada.
+ *          dado un patrï¿½n de entrada.
  * \param cadena La cadena completa a separar.
  * \param patron El patron por el que separar la cadena.
- * \return Un vector de cadenas que contiene todas las subcadenas separadas por el patr¢n.
+ * \return Un vector de cadenas que contiene todas las subcadenas separadas por el patrï¿½n.
  */
 vector<string> separar_campos(const string& cadena, const string& patron) {
     vector<string> resultado;
@@ -56,9 +56,9 @@ vector<string> separar_campos(const string& cadena, const string& patron) {
     return resultado;
 }
 
-/** \brief Este m‚todo sirve para buscar un hecho en la BH.
+/** \brief Este mï¿½todo sirve para buscar un hecho en la BH.
  * \param meta El identificador (ID) del Hecho.
- * \return Un puntero al hecho de la BH o NULL si el ID no est  en la BH.
+ * \return Un puntero al hecho de la BH o NULL si el ID no estï¿½ en la BH.
  */
 Hecho * buscar_hecho(string meta) {
     for (int i = 0; i < (int) BH.size(); i++) {
@@ -69,7 +69,7 @@ Hecho * buscar_hecho(string meta) {
 }
 
 /**
- * \brief Este m‚todo comprueba si en un string dado por par metro hay espacios.
+ * \brief Este mï¿½todo comprueba si en un string dado por parï¿½metro hay espacios.
  * \param str El string a comprobar.
  * \return Un booleano indicando si hay un espacio en el string o no.
 */
@@ -82,7 +82,7 @@ bool hay_espacios(const string& str) {
 }
 
 /**
- * \brief Este m‚todo devuelve las Reglas que derivan en un Hecho dado por par metro.
+ * \brief Este mï¿½todo devuelve las Reglas que derivan en un Hecho dado por parï¿½metro.
  * \param meta El ID del Hecho a comprobar. ?Debe de ser un ID de Hecho!
 */
 vector<Regla> equiparar(string meta) {
@@ -117,14 +117,14 @@ double calcular_prob(Regla R) {
 }
 
 /**
- * \brief M‚todo principal para el motor de inferencias con encadenamiento hacia atr s.
- *          Desde este m‚todo se comprueba si el Hecho pasado por par metro puede ser resultado de los Hechos iniciales.
+ * \brief Mï¿½todo principal para el motor de inferencias con encadenamiento hacia atrï¿½s.
+ *          Desde este mï¿½todo se comprueba si el Hecho pasado por parï¿½metro puede ser resultado de los Hechos iniciales.
  * \param meta El ID de la meta a verificar.
  * \return Un booleano que indica si la meta se puede derivar de los Hechos iniciales.
 */
 bool verificar(string meta) {
     bool verificado = false;
-    // Si la meta est  ya contenida en la BH, devuelve true y el m‚todo no sigue.
+    // Si la meta estï¿½ ya contenida en la BH, devuelve true y el mï¿½todo no sigue.
     if (buscar_hecho(meta) != NULL)
         verificado = true;
     else {
@@ -162,15 +162,15 @@ bool verificar(string meta) {
             }
 
             if (verificado) {
-                // Si est  verificado y no est  en la BH
+                // Si estï¿½ verificado y no estï¿½ en la BH
                 if (buscar_hecho(meta) == NULL) {
                     // Creamos el Hecho y lo a?adimos a la BH
                     Hecho aux(meta, calcular_prob(R));
                     BH.push_back(aux);
                     cout << "A?adido " << meta << " a la BH con FC = " << buscar_hecho(R.getRes())->getFC() << endl;
                 } else {
-                    /* Si est  en la BH, concatenamos el anterior FC calculado
-                       Aqu¡ es donde se comprueba el caso 2 para concatenar los FC */
+                    /* Si estï¿½ en la BH, concatenamos el anterior FC calculado
+                       Aquï¿½ es donde se comprueba el caso 2 para concatenar los FC */
                     double prob_ant = buscar_hecho(meta)->getFC();
                     double prob_calc = calcular_prob(R);
                     double prob_nueva = 0.0;
@@ -183,8 +183,8 @@ bool verificar(string meta) {
                         prob_nueva = prob_ant + prob_calc * (1 + prob_ant);
                         cout << prob_ant << " + " << prob_calc << " * (1 + " << prob_ant << ")" << endl;
                     } else {
-                        prob_nueva = 1 - min(abs(prob_ant), abs(prob_calc));
-                        cout << "1 - min(abs(" << prob_ant << "), abs(" << prob_calc << "))" << endl;
+                        prob_nueva = (prob_ant + prob_calc) / (1 - min(abs(prob_ant), abs(prob_calc)));
+                        cout << "(" << prob_ant << " + " << prob_calc << ") / (1 - min(abs(" << prob_ant << "), abs(" << prob_calc << ")))" << endl;
                     }
                     buscar_hecho(meta)->setFC(prob_nueva);
                     cout << "Actualizada " << meta << " a la BH con FC = " << prob_nueva << endl;
@@ -196,7 +196,7 @@ bool verificar(string meta) {
 }
 
 /**
- * \brief Funci¢n que llama a la funci¢n principal "verificar".
+ * \brief Funciï¿½n que llama a la funciï¿½n principal "verificar".
  * \param meta La meta inicial a comprobar.
  * \return Un booleano que indica si la meta se verifica o no.
 */
@@ -207,9 +207,9 @@ bool encadenamiento_hacia_atras(string meta) {
 }
 
 int main(int argc, char ** argv) {
-    // Comprobamos si el n£mero de par metros es correcto
+    // Comprobamos si el nï¿½mero de parï¿½metros es correcto
     if (argc != 3) {
-        cerr << "ERROR: N£mero de par metros incorrecto" << endl;
+        cerr << "ERROR: Nï¿½mero de parï¿½metros incorrecto" << endl;
         cerr << "USO: " << argv[0] << "BaseConocimientos.txt BaseHechos.txt" << endl;
         return 1;
     }
@@ -248,7 +248,7 @@ int main(int argc, char ** argv) {
 
     bc >> numConocimientos;
     getline(bc, linea);
-    // Y aqu¡ leemos la BC
+    // Y aquï¿½ leemos la BC
     for (int i = 0; i < numConocimientos; i++) {
         getline(bc, linea);
         vector<string> campos = separar_campos(linea, ":");                 // campos[0] = id, campos[1] = resto
@@ -292,9 +292,9 @@ int main(int argc, char ** argv) {
         cout << "Objetivo " << i+1 << ": " << metas[i] << endl;
         if (encadenamiento_hacia_atras(metas[i])) {
             Hecho * fin = buscar_hecho(metas[i]);
-            cout << "El algoritmo SBR con encadenamiento hacia atr s verifica la meta " << metas[i] << " con FC = " << fin->getFC() << endl;
+            cout << "El algoritmo SBR con encadenamiento hacia atrï¿½s verifica la meta " << metas[i] << " con FC = " << fin->getFC() << endl;
         } else
-            cout << "El algoritmo SBR con encadenamiento hacia atr s NO verifica la meta " << metas[i] << endl;
+            cout << "El algoritmo SBR con encadenamiento hacia atrï¿½s NO verifica la meta " << metas[i] << endl;
     }
     return 0;
 }
